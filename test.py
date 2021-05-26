@@ -21,3 +21,26 @@ def test_print():
     tree.insert(root=node, key=50)
     tree.print_values(root=node)
     assert node.right.val == 100
+
+def test_search():
+    node = tree.Node(100)
+    tree.insert(root=node, key=302)
+    assert tree.search_values(node, 100) == node
+
+def test_find_min():
+    node = tree.Node(50)
+    tree.insert(node, 11)
+    tree.insert(node, 30)
+    tree.insert(node, 51)
+    tree.insert(node, 4)
+    tree.insert(node, 1)
+    assert tree.find_min(node) == node.left.left.left
+
+def test_find_max():
+    node = tree.Node(50)
+    tree.insert(node, 11)
+    tree.insert(node, 30)
+    tree.insert(node, 51)
+    tree.insert(node, 4)
+    tree.insert(node, 1)
+    assert tree.find_max(node).val == 51
