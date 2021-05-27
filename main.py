@@ -45,3 +45,23 @@ def find_max(root:Node):
         root = root.right
     return root
     
+def delete_node(root:Node, key):
+    if root is None:
+        return root
+    if key < root.val:
+        root.left = delete_node(root.left, key)
+    elif key > root.val:
+        root.right = delete_node(root.right, key)
+    else:
+        if root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        elif root.right is None:
+            temp = root.left
+            root = None
+            return temp
+        temp = find_min(root.right)
+        root.val = temp.val
+        root.right = delete_node(root.right, temp.val)
+    return root

@@ -44,3 +44,23 @@ def test_find_max():
     tree.insert(node, 4)
     tree.insert(node, 1)
     assert tree.find_max(node).val == 51
+
+def test_leaf_delete():
+    node = tree.Node(4)
+    tree.insert(node, 5)
+    tree.delete_node(node, 5)
+    assert node.right == None
+
+def test_one_child_delete():
+    node = tree.Node(40)
+    tree.insert(node, 50)
+    tree.insert(node, 60)
+    tree.delete_node(node, 50)
+    assert node.right.val == 60
+
+def test_two_children_delete():
+    node = tree.Node(500)
+    tree.insert(node, 501)
+    tree.insert(node,499)
+    tree.delete_node(node, 500)
+    assert node.val == 501 and node.left.val == 499
